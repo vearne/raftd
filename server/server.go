@@ -71,6 +71,9 @@ func (s *Server) ListenAndServe(leader string) error {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	s.raftServer.SetHeartbeatInterval(1 * time.Second)
+	s.raftServer.SetElectionTimeout(3 * time.Second)
 	transporter.Install(s.raftServer, s)
 	s.raftServer.Start()
 
@@ -114,6 +117,9 @@ func (s *Server) ListenAndServe(leader string) error {
 	s.router.HandleFunc("/db/{key}", s.readHandler).Methods("GET")
 	s.router.HandleFunc("/db/{key}", s.writeHandler).Methods("POST")
 	s.router.HandleFunc("/join", s.joinHandler).Methods("POST")
+	s.router.HandleFunc("/members", s.MemberHandler).Methods("GET")
+	s.router.HandleFunc("/leader", s.LeaderHandler).Methods("GET")
+	s.router.HandleFunc("/state", s.StateHandler).Methods("GET")
 
 	log.Println("Listening at:", s.connectionString())
 
@@ -124,6 +130,21 @@ func (s *Server) ListenAndServe(leader string) error {
 // HandleFunc() interface.
 func (s *Server) HandleFunc(pattern string, handler func(http.ResponseWriter, *http.Request)) {
 	s.router.HandleFunc(pattern, handler)
+}
+
+func (s *Server) LeaderHandler(w http.ResponseWriter, req *http.Request){
+	bt, _ := json.Marshal(s.raftServer.Leader())
+	w.Write(bt)
+}
+
+func (s *Server) StateHandler(w http.ResponseWriter, req *http.Request){
+	bt, _ := json.Marshal(s.raftServer.GetState())
+	w.Write(bt)
+}
+
+func (s *Server) MemberHandler(w http.ResponseWriter, req *http.Request){
+	bt, _ := json.Marshal(s.raftServer.Peers())
+	w.Write(bt)
 }
 
 // Joins to the leader of an existing cluster.
