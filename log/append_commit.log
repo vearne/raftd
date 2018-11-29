@@ -1,0 +1,25 @@
+[raft]14:28:21.042364 7bd5bdc RECV /appendEntries {"Term":17,"PrevLogIndex":26,"PrevLogTerm":17,"CommitIndex":26,"LeaderName":"2832bfa","Entries":null}
+[raft]14:28:21.042396 log.truncate:  26
+[raft]14:28:21.042534 7bd5bdc RESP /appendEntries peer  append false {"Term":17,"Index":26,"CommitIndex":26,"Success":true}
+[raft]14:28:24.039912 7bd5bdc RECV /appendEntries {"Term":17,"PrevLogIndex":26,"PrevLogTerm":17,"CommitIndex":26,"LeaderName":"2832bfa","Entries":null}
+[raft]14:28:24.039943 log.truncate:  26
+[raft]14:28:24.040076 7bd5bdc RESP /appendEntries peer  append false {"Term":17,"Index":26,"CommitIndex":26,"Success":true}
+[raft]14:28:27.043725 7bd5bdc RECV /appendEntries {"Term":17,"PrevLogIndex":26,"PrevLogTerm":17,"CommitIndex":26,"LeaderName":"2832bfa","Entries":null}
+[raft]14:28:27.043762 log.truncate:  26
+[raft]14:28:27.043853 7bd5bdc RESP /appendEntries peer  append false {"Term":17,"Index":26,"CommitIndex":26,"Success":true}
+[raft]14:28:30.040898 7bd5bdc RECV /appendEntries {"Term":17,"PrevLogIndex":26,"PrevLogTerm":17,"CommitIndex":26,"LeaderName":"2832bfa","Entries":[{"Index":27,"Term":17,"CommandName":"write","Command":"eyJrZXkiOiJhYWEiLCJ2YWx1ZSI6ImJiYiJ9Cg=="}]}
+[raft]14:28:30.040923 log.truncate:  26
+[raft]14:28:30.043691 7bd5bdc RESP /appendEntries peer  append false {"Term":17,"Index":27,"CommitIndex":26,"Success":true}
+[raft]14:28:33.041432 7bd5bdc RECV /appendEntries {"Term":17,"PrevLogIndex":27,"PrevLogTerm":17,"CommitIndex":27,"LeaderName":"2832bfa","Entries":null}
+[raft]14:28:33.041458 log.truncate:  27
+[raft]14:28:33.041609 setCommitIndex.set.result index: 27, entries index: 26
+[raft]14:28:33.041832 7bd5bdc RESP /appendEntries peer  append false {"Term":17,"Index":27,"CommitIndex":27,"Success":true}
+[raft]14:28:36.045474 7bd5bdc RECV /appendEntries {"Term":17,"PrevLogIndex":27,"PrevLogTerm":17,"CommitIndex":27,"LeaderName":"2832bfa","Entries":null}
+[raft]14:28:36.045506 log.truncate:  27
+[raft]14:28:36.045605 7bd5bdc RESP /appendEntries peer  append false {"Term":17,"Index":27,"CommitIndex":27,"Success":true}
+[raft]14:28:39.044995 7bd5bdc RECV /appendEntries {"Term":17,"PrevLogIndex":27,"PrevLogTerm":17,"CommitIndex":27,"LeaderName":"2832bfa","Entries":null}
+[raft]14:28:39.045020 log.truncate:  27
+[raft]14:28:39.045169 7bd5bdc RESP /appendEntries peer  append false {"Term":17,"Index":27,"CommitIndex":27,"Success":true}
+[raft]14:28:42.043169 7bd5bdc RECV /appendEntries {"Term":17,"PrevLogIndex":27,"PrevLogTerm":17,"CommitIndex":27,"LeaderName":"2832bfa","Entries":null}
+[raft]14:28:42.043196 log.truncate:  27
+[raft]14:28:42.043378 7bd5bdc RESP /appendEntries peer  append false {"Term":17,"Index":27,"CommitIndex":27,"Success":true}
