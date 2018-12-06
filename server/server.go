@@ -117,7 +117,7 @@ func (s *Server) ListenAndServe(leader string) error {
 	s.router.HandleFunc("/db/{key}", s.readHandler).Methods("GET")
 	s.router.HandleFunc("/db/{key}", s.writeHandler).Methods("POST")
 	s.router.HandleFunc("/join", s.joinHandler).Methods("POST")
-	s.router.HandleFunc("/members", s.MemberHandler).Methods("GET")
+	s.router.HandleFunc("/peers", s.PeersHandler).Methods("GET")
 	s.router.HandleFunc("/leader", s.LeaderHandler).Methods("GET")
 	s.router.HandleFunc("/state", s.StateHandler).Methods("GET")
 
@@ -142,7 +142,7 @@ func (s *Server) StateHandler(w http.ResponseWriter, req *http.Request){
 	w.Write(bt)
 }
 
-func (s *Server) MemberHandler(w http.ResponseWriter, req *http.Request){
+func (s *Server) PeersHandler(w http.ResponseWriter, req *http.Request){
 	bt, _ := json.Marshal(s.raftServer.Peers())
 	w.Write(bt)
 }
